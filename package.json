@@ -1,0 +1,28 @@
+{
+  "name": "@nightwatch/selector-playground",
+  "version": "1.0.0",
+  "description": "Nightwatch Selector Playground that allows you to tests command directly from the browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshit-bs/nightwatch-selector-playground.git"
+  },
+  "keywords": [
+    "nightwatch",
+    "chrome",
+    "selector-playground",
+    "automation"
+  ],
+  "author": "Harshit Agrawal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harshit-bs/nightwatch-selector-playground/issues"
+  },
+  "homepage": "https://github.com/harshit-bs/nightwatch-selector-playground#readme",
+  "dependencies": {
+    "archiver": "^5.3.1"
+  }
+}
