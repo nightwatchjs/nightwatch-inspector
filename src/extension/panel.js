@@ -3,6 +3,7 @@ const tabID = chrome.devtools.inspectedWindow.tabId;
 const exploreModeId = 'exploreMode';
 const tryNightwatchCommandId = 'tryNightwatchCommand';
 const nightwatchCommandId = 'nightwatchCommand';
+const commandHistory = new Set();
 let EXPLORE_MODE = false;
 
 const backgroundPageConnection = chrome.runtime.connect({
@@ -32,7 +33,14 @@ webSocket.onopen = () => {
 };
 
 webSocket.onmessage = ((msg) => {
-  document.getElementById('commandResult').textContent = msg.data;
+  const {result = null, error = null, executedCommand} = JSON.parse(msg.data);
+
+  document.getElementById('commandResult').textContent = result;
+  if (!error && !commandHistory.has(executedCommand)) {
+    addRowInCommand(executedCommand);
+    commandHistory.add(executedCommand);
+  }
+
   sendMessageToBackground('EXPLORE_MODE', true);
 });
 
@@ -51,11 +59,9 @@ function tryNightwatchCommand() {
   // setting explore mode false when trying out nightwatch commands
   sendMessageToBackground('EXPLORE_MODE', false);
   webSocket.send(nightwatchCommand);
-  addRowInCommand(nightwatchCommand);
 }
 
 function clickOnExploreMode(event) {
-  console.log("clicked");
   const checkBox = event.target;
   sendMessageToBackground('EXPLORE_MODE', checkBox.checked);
 }
