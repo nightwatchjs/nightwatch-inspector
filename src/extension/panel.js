@@ -33,8 +33,9 @@ webSocket.onopen = () => {
 };
 
 webSocket.onmessage = ((msg) => {
-  const {result = null, error = null, executedCommand} = JSON.parse(msg.data);
 
+  const {result = null, error = null, executedCommand} = JSON.parse(msg.data);
+  console.log(msg.data);
   document.getElementById('commandResult').textContent = result;
   if (!error && !commandHistory.has(executedCommand)) {
     addRowInCommand(executedCommand);

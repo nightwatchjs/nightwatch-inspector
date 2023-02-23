@@ -35,13 +35,14 @@ module.exports = class SelectorPlaygroundServer {
     this._wss.on('connection', (ws) => {
       ws.on('message', async (data) => {
         this.Debuggability.debugMode = true;
-        const isES6AsyncCommand = this.client.isES6AsyncCommand;
-        this.client.isES6AsyncCommand = true;
+        const isES6AsyncTestcase = this.client.isES6AsyncTestcase;
+        this.client.isES6AsyncTestcase = true;
   
         const context = {browser: this.client.api};
         vm.createContext(context);
         
         let result;
+        let error;
         try {
           const message = data.toString();
           console.log('Executed from browser : ', message);
@@ -53,11 +54,16 @@ module.exports = class SelectorPlaygroundServer {
 
         if (this.isErrorObject(result)) {
           result = result.message;
+          error = true;
         }
 
-        ws.send(JSON.stringify(result));
+        ws.send(JSON.stringify({
+          result: result,
+          error: error,
+          executedCommand: data.toString()
+        }));
 
-        this.client.isES6AsyncCommand = isES6AsyncCommand;
+        this.client.isES6AsyncTestcase = isES6AsyncTestcase;
         this.Debuggability.debugMode = false;
       });
     });
