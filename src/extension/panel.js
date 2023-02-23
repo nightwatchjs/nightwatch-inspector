@@ -1,3 +1,9 @@
+const tabID = chrome.devtools.inspectedWindow.tabId;
+const exploreModeId = 'exploreMode';
+const tryNightwatchCommandId = 'tryNightwatchCommand';
+const nightwatchCommandId = 'nightwatchCommand';
+const commandHistory = new Set();
+let EXPLORE_MODE = false;
 const portNumber = 8080;
 let webSocket;
 
@@ -13,12 +19,18 @@ function connectWebSocket(port) {
     socket.onclose = () => {
       console.log(`Disconnected from Nightwatch Server localhost:${port}`);
     };
-  
-    socket.onmessage = (msg) => {
-      console.log(`Received message from server localhost:${port}: ${msg}`);
-      document.getElementById('commandResult').textContent = msg.data;
+
+    socket.onmessage = ((msg) => {
+      const {result = null, error = null, executedCommand} = JSON.parse(msg.data);
+      console.log(msg.data);
+      document.getElementById('commandResult').textContent = result;
+      if (!error && !commandHistory.has(executedCommand)) {
+        addRowInCommand(executedCommand);
+        commandHistory.add(executedCommand);
+      }
+    
       sendMessageToBackground('EXPLORE_MODE', true);
-    };
+    });
 
     socket.onerror = (err) => {
       console.error(`WebSocket error: ${err}`);
@@ -38,12 +50,6 @@ connectWebSocket(portNumber)
   .catch((error) => {
     console.error(`WebSocket error: ${error}`);
   });
-
-const tabID = chrome.devtools.inspectedWindow.tabId;
-const exploreModeId = 'exploreMode';
-const tryNightwatchCommandId = 'tryNightwatchCommand';
-const nightwatchCommandId = 'nightwatchCommand';
-let EXPLORE_MODE = false;
 
 const backgroundPageConnection = chrome.runtime.connect({
   name: "Selector Playground"
@@ -78,11 +84,9 @@ function tryNightwatchCommand() {
   // setting explore mode false when trying out nightwatch commands
   sendMessageToBackground('EXPLORE_MODE', false);
   webSocket.send(nightwatchCommand);
-  addRowInCommand(nightwatchCommand);
 }
 
 function clickOnExploreMode(event) {
-  console.log("clicked");
   const checkBox = event.target;
   sendMessageToBackground('EXPLORE_MODE', checkBox.checked);
 }
