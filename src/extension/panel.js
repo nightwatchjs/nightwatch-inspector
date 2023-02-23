@@ -1,3 +1,9 @@
+const tabID = chrome.devtools.inspectedWindow.tabId;
+const exploreModeId = 'exploreMode';
+const tryNightwatchCommandId = 'tryNightwatchCommand';
+const nightwatchCommandId = 'nightwatchCommand';
+const commandHistory = new Set();
+let EXPLORE_MODE = false;
 const portNumber = 8080;
 let webSocket;
 
@@ -15,7 +21,6 @@ function connectWebSocket(port) {
     };
 
     socket.onmessage = ((msg) => {
-
       const {result = null, error = null, executedCommand} = JSON.parse(msg.data);
       console.log(msg.data);
       document.getElementById('commandResult').textContent = result;
@@ -45,13 +50,6 @@ connectWebSocket(portNumber)
   .catch((error) => {
     console.error(`WebSocket error: ${error}`);
   });
-
-const tabID = chrome.devtools.inspectedWindow.tabId;
-const exploreModeId = 'exploreMode';
-const tryNightwatchCommandId = 'tryNightwatchCommand';
-const nightwatchCommandId = 'nightwatchCommand';
-const commandHistory = new Set();
-let EXPLORE_MODE = false;
 
 const backgroundPageConnection = chrome.runtime.connect({
   name: "Selector Playground"
