@@ -1,5 +1,5 @@
 {
-  "name": "@nightwatch/selector-playground",
+  "name": "nightwatch-selector-playground",
   "version": "1.0.0",
   "description": "Nightwatch Selector Playground that allows you to tests command directly from the browser",
   "main": "index.js",

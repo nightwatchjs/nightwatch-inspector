@@ -6,6 +6,7 @@ const {WebSocketServer} = require('ws');
 module.exports = class SelectorPlaygroundServer {
   constructor() {
     this.finishCallback = null;
+    this.portNumber = 8080;
   }
 
   setClient(client) {
@@ -29,8 +30,16 @@ module.exports = class SelectorPlaygroundServer {
     return err instanceof Error || Object.prototype.toString.call(err) === '[object Error]'
   }
 
-  initSocket(){
-    this._wss = new WebSocketServer({port: 8080});
+  startServer() {
+    this._wss = new WebSocketServer({port: this.portNumber});
+
+    this._wss.on('error', (error) => {
+      this.handleSocketError(error);
+    });
+  
+    this._wss.on('listening', () => {
+      console.log(`WebSocket server is listening on port ${this.portNumber}`);
+    });
 
     this._wss.on('connection', (ws) => {
       ws.on('message', async (data) => {
@@ -67,6 +76,25 @@ module.exports = class SelectorPlaygroundServer {
         this.Debuggability.debugMode = false;
       });
     });
+  }
+
+  handleSocketError(e) {
+    if (e.code === 'EADDRINUSE') {
+      console.warn(`Port ${this.portNumber} is already in use. Trying the next available port.`);
+      this.portNumber++;
+    } else {
+      console.error(`Could not start WebSocket server on port ${this.portNumber}: ${e.message}`);
+    }
+
+    this.initSocket();
+  }
+
+  initSocket() {
+    try {
+      this.startServer();
+    } catch (e) {
+      this.handleSocketError(e);
+    }
   }
 
   async createExtension () {

@@ -1,4 +1,51 @@
-const webSocket = new WebSocket('ws://localhost:8080');
+const portNumber = 8080;
+let webSocket;
+
+function connectWebSocket(port) {
+  return new Promise((resolve, reject) => {
+    const socket = new WebSocket(`ws://localhost:${port}`);
+    socket.onopen = () => {
+      resolve(socket);
+      console.log(`Hurray, Connected to Nightwatch Server localhost:${port}`);
+      webSocket = socket;
+    };
+  
+    socket.onclose = () => {
+      console.log(`Disconnected from Nightwatch Server localhost:${port}`);
+    };
+
+    socket.onmessage = ((msg) => {
+
+      const {result = null, error = null, executedCommand} = JSON.parse(msg.data);
+      console.log(msg.data);
+      document.getElementById('commandResult').textContent = result;
+      if (!error && !commandHistory.has(executedCommand)) {
+        addRowInCommand(executedCommand);
+        commandHistory.add(executedCommand);
+      }
+    
+      sendMessageToBackground('EXPLORE_MODE', true);
+    });
+
+    socket.onerror = (err) => {
+      console.error(`WebSocket error: ${err}`);
+      socket.close();
+
+      connectWebSocket(port + 1)
+        .then(resolve)
+        .catch(reject);
+    };
+  });
+}
+
+connectWebSocket(portNumber)
+  .then((socket) => {
+    console.log(`WebSocket connected on port ${socket.url}`);
+  })
+  .catch((error) => {
+    console.error(`WebSocket error: ${error}`);
+  });
+
 const tabID = chrome.devtools.inspectedWindow.tabId;
 const exploreModeId = 'exploreMode';
 const tryNightwatchCommandId = 'tryNightwatchCommand';
@@ -27,27 +74,6 @@ chrome.runtime.onMessage.addListener((msg, sender, response) => {
     }
   }
 });
-
-webSocket.onopen = () => {
-  console.log("Hurray, Connected to Nightwatch Server !!");
-};
-
-webSocket.onmessage = ((msg) => {
-
-  const {result = null, error = null, executedCommand} = JSON.parse(msg.data);
-  console.log(msg.data);
-  document.getElementById('commandResult').textContent = result;
-  if (!error && !commandHistory.has(executedCommand)) {
-    addRowInCommand(executedCommand);
-    commandHistory.add(executedCommand);
-  }
-
-  sendMessageToBackground('EXPLORE_MODE', true);
-});
-
-webSocket.onclose = () => {
-  console.log("Bye, Nightwatch Server Closed !!");
-};
 
 document.getElementById(exploreModeId).addEventListener('click', clickOnExploreMode);
 document.getElementById(tryNightwatchCommandId).addEventListener('click', tryNightwatchCommand);
