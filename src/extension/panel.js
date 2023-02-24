@@ -36,9 +36,11 @@ function connectWebSocket(port) {
       console.error(`WebSocket error: ${err}`);
       socket.close();
 
-      connectWebSocket(port + 1)
-        .then(resolve)
-        .catch(reject);
+      if (port < portNumber + 100) {
+        connectWebSocket(port + 1)
+          .then(resolve)
+          .catch(reject);
+      }
     };
   });
 }
