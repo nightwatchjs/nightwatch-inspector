@@ -6,8 +6,8 @@ if [ ! -d "$DIR" ]; then
   mkdir $DIR
 fi
 
-echo "📂 Copying files now in '$DIR' ..."
-
+echo "📂 Moving to src folder ..."
+cd src/
 echo "🚀 Creating .crx file ..."
-cd src/ && zip -r ../../dist/extension.crx .
+zip -r ../dist/extension.crx .
 echo "✅ .crx file created successfully!"
