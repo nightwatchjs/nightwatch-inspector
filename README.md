@@ -22,11 +22,11 @@ Nightwatch Selector Playground requires no setup or downloads. Simply use the Ni
 
 
 ## 🎉 Key Features
-- Easily find CSS selectors for elements on a webpage
-- Test Nightwatch commands directly from the browser
-- Copy selectors to clipboard with one click
-- Highlight elements on hover for easy identification
-- History table of selectors and commands.
+1. Easily find CSS selectors for elements on a webpage
+2. Test Nightwatch commands directly from the browser
+3. Copy selectors to clipboard with one click
+4. Highlight elements on hover for easy identification
+5. History table of selectors and commands.
 
 
 ## 🎥 Demo
@@ -42,6 +42,11 @@ import {crxfile} from 'nightwatch-selector-playground';
 ```
 
 This code snippet shows how to import the Nightwatch Selector Playground in other projects. 💻
+
+## 🚫 Limitations:
+- Currently, the tool only supports serial mode and does not support parallelism.
+- Including this tool in other projects does not allow you to test commands directly from the browser.
+
 
 ## 🤝 Contributing
 Contributions are always welcome! If you have any suggestions, bug reports, or pull requests, please feel free to open an issue or pull request.
