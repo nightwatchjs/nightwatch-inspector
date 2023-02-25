@@ -6,7 +6,7 @@
 
 Nightwatch Selector Playground is a devtool which currently supports Google Chrome. This tool helps to find CSS selectors for elements on a webpage. It also allows you to tests nightwatch commands directly from the browser in Nightwatch debug mode. 
 
-Nightwatch Selector Playground requires no setup or downloads. Simply use the Nightwatch version where this Selector Playground is supported. This tool specifically designed to work with Nightwatch.js, a popular end-to-end testing framework. 
+Nightwatch Selector Playground requires no setup or downloads. Simply use the Nightwatch version where this tool is supported. It is specifically designed to work with Nightwatch.js, a popular end-to-end testing framework. 
 
 ## 🚀 Getting Started With Nightwatch 
 1. No downloads or setup necessary. Just checkout Nightwatch to Nightwatch Selector Playground supported version.
