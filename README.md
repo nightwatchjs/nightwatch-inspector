@@ -43,7 +43,7 @@ import {crxfile} from 'nightwatch-selector-playground';
 
 This code snippet shows how to import the Nightwatch Selector Playground in other projects. 💻
 
-## 🚫 Limitations:
+## 🚫 Limitations
 - Currently, the tool only supports serial mode and does not support parallelism.
 - Including this tool in other projects does not allow you to test commands directly from the browser.
 
