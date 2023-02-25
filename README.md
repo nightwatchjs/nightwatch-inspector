@@ -10,15 +10,23 @@ This developer tool doesn't require any setup or downloads. You can simply use t
 
 ## 🚀 Getting Started With Nightwatch 
 1. Make sure Nightwatch is already installed and it supports the Nightwatch Selector Playground. If it is not installed, you can refer to the [documentation](https://nightwatchjs.org/guide/quickstarts/create-and-run-a-nightwatch-test.html)  
-2. Add `pause` or `debug` command in your test to wait
+2. Add `pause` or `debug` command in your test to wait. For e.g.
+   
+   ```js
+   it('Demo test ecosia.org', async function(browser) {
+     browser
+      .navigateTo('https://www.ecosia.org')
+      .debug()
+   });
+   ```
 3. Run your Nightwatch tests by passing `--debug` flag
 
    ```sh
     npx nightwatch ./nightwatch/examples/basic/ecosia.js -e chrome --debug
    ```
-4. Go to the browser and inspect elements and go to `Selector Playground` tab
-5. Click the `Explore Mode` button to find CSS selectors for elements of the webpage
-6. Click `Try` button to test the Commands 
+4. In chrome browser, inspect the elements  of the webpage and go to `Selector Playground` tab
+5. Click the `Explore Mode` button to find CSS selectors for the elements on the webpage.
+6. Use these selectors in Nightwatch commands and click the Try button to see the results
 
 
 ## 🎉 Key Features
