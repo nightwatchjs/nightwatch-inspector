@@ -4,12 +4,12 @@
   <img alt="Nightwatch.js Logo" src="https://raw.githubusercontent.com/nightwatchjs/nightwatch/main/.github/assets/nightwatch-logo.png" width=200 />
 </p>
 
-Nightwatch Selector Playground is a developer tool which currently supports Google Chrome. It is designed to help you CSS selectors for elements on a webpage. It also allows you to tests nightwatch commands directly from the browser in Nightwatch debug mode. 
+Nightwatch Selector Playground is a developer tool 🛠️ which currently supports Google Chrome. It is designed to help you CSS selectors for elements on a webpage. It also allows you to tests nightwatch commands directly from the browser in Nightwatch debug mode. 
 
 This developer tool doesn't require any setup or downloads. You can simply use the version of Nightwatch where the Nightwatch Selector Playground is supported. It is specifically designed to work with [Nightwatch.js](https://nightwatchjs.org/), a popular end-to-end testing framework.
 
 ## 🚀 Getting Started With Nightwatch 
-1. Make sure Nightwatch is already installed and it supports the Nightwatch Selector Playground. If it is not installed, you can refer to the [documentation](https://nightwatchjs.org/guide/quickstarts/create-and-run-a-nightwatch-test.html)  
+1. Make sure Nightwatch is already installed and it supports the Nightwatch Selector Playground. If it is not installed, you can refer to the [documentation](https://nightwatchjs.org/guide/quickstarts/create-and-run-a-nightwatch-test.html) 📖
 2. Add `pause` or `debug` command in your test to wait. For e.g.
    
    ```js
@@ -38,6 +38,7 @@ This developer tool doesn't require any setup or downloads. You can simply use t
 
 
 ## 🎥 Demo
+Check out the demo of the playground in action 👀
 
 ![playground](https://user-images.githubusercontent.com/94462364/221351842-f47ac331-325f-4098-b540-be3bd637496f.gif)
 
