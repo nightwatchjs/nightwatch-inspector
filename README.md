@@ -9,8 +9,8 @@ Nightwatch Selector Playground is a devtool which currently supports Google Chro
 Nightwatch Selector Playground requires no setup or downloads. Simply use the Nightwatch version where this tool is supported. It is specifically designed to work with Nightwatch.js, a popular end-to-end testing framework. 
 
 ## 🚀 Getting Started With Nightwatch 
-1. No downloads or setup necessary. Just checkout Nightwatch to Nightwatch Selector Playground supported version.
-2. Pass `pause` or `debug` command in the test to wait
+1. No downloads or setup necessary. Just ensure that your Nightwatch version supports the Nightwatch Selector Playground.
+2. Add `pause` or `debug` command in your test to wait
 3. Run your Nightwatch tests by passing `--debug` flag
 
    ```sh
