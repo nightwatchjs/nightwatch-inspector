@@ -38,8 +38,10 @@ Nightwatch Selector Playground requires no setup or downloads. Simply use the Ni
 This tool is not limited to Nightwatch.js and can be used in any project that needs CSS selectors. However, it comes with a limitation; you cannot test Nightwatch commands directly from the browser because it doesn't connected to the Nightwatch Server.
 
 ```js
-const {crxfile} = require('nightwatch-selector-playground');
+import {crxfile} from 'nightwatch-selector-playground';
 ```
+
+This code snippet shows how to import the Nightwatch Selector Playground in other projects. 💻
 
 ## 🤝 Contributing
 Contributions are always welcome! If you have any suggestions, bug reports, or pull requests, please feel free to open an issue or pull request.
