@@ -2,8 +2,7 @@
   "name": "nightwatch-selector-playground",
   "version": "1.0.3",
   "description": "Nightwatch Selector Playground that allows you to tests command directly from the browser",
-  "main": "dist/index.js",
-  "bin": "./index.js",
+  "main": "index.js",
   "scripts": {
     "build": "./preprocessExtension.sh",
     "prepublishOnly": "npm run build",
