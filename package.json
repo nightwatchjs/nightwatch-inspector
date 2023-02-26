@@ -1,6 +1,6 @@
 {
   "name": "nightwatch-selector-playground",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Nightwatch Selector Playground that allows you to tests command directly from the browser",
   "main": "index.js",
   "scripts": {
