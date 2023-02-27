@@ -32,6 +32,7 @@ header {
     display: flex;
     flex-direction: row;
     gap: 8px;
+    position: relative;
 }
 
 .heading {
@@ -86,10 +87,9 @@ input[type="text"], textarea {
     flex-direction: row;
     align-items: center;
     padding: 4px 0px 4px 8px;
-    height: 28px;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    height: 36px;
+    z-index: 3;
     background: #FFFFFF;
 
     font-family: 'Source Sans Pro';
@@ -97,6 +97,7 @@ input[type="text"], textarea {
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
+    background-color: transparent;
 }
 
 #nightwatchCommand, #commandResult {
@@ -202,4 +203,22 @@ footer .heading2 {
     border: 1px solid hsl(23,35%,55%);
     border-radius: 4px;
     color: #1B1B1B;
+}
+
+#suggestion {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: 9px;
+    color: #868686;
+
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
 }
