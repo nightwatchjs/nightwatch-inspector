@@ -6,7 +6,26 @@
   "scripts": {
     "build": "./preprocessExtension.sh",
     "prepublishOnly": "npm run build",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "eslint": "eslint index.js src --quiet"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "browser": false,
+      "node": true
+    },
+    "rules": {
+      "eqeqeq": "off",
+      "curly": [
+        "error",
+        "all"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ]
+    }
   },
   "repository": {
     "type": "git",
@@ -26,5 +45,8 @@
   "homepage": "https://github.com/harshit-bs/nightwatch-selector-playground#readme",
   "dependencies": {
     "archiver": "^5.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0"
   }
 }

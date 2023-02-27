@@ -49,7 +49,6 @@ function mouseOut(event) {
 }
 
 function clickEvent(event) {
-  console.log('click event happend');
   if (!EXPLORE_MODE) {
     return;
   }
@@ -60,107 +59,109 @@ function clickEvent(event) {
   const uniqueSelector = generateSelector(element);
 
   chrome.runtime.sendMessage({
-      from: 'contentJS',
-      action: 'selector',
-      content: uniqueSelector
+    from: 'contentJS',
+    action: 'selector',
+    content: uniqueSelector
   });
 }
 
 function setExploreMode(value) {
-  console.log(value)
   EXPLORE_MODE = value;
 }
 
 function highlightElement(selector) {
-    // clear all previous highlighted elements
-    clearHighlight();
-    const element = document.querySelector(selector);
-    addHighlightClass(element);
+  // clear all previous highlighted elements
+  clearHighlight();
+  const element = document.querySelector(selector);
+  addHighlightClass(element);
 }
 
 function addHighlightClass(element) {
-    // Adding css class to highlight the element
-    element.classList.add(highlightClassName);
+  // Adding css class to highlight the element
+  element.classList.add(highlightClassName);
 }
 
 function clearHighlight(element = null) {
-    if (element) {
-        element.classList.remove(highlightClassName);
-        return;
-    }
+  if (element) {
+    element.classList.remove(highlightClassName);
 
-    const highlightedElements = [...document.getElementsByClassName(highlightClassName)];
+    return;
+  }
 
-    highlightedElements.forEach((element) => {
-        element.classList.remove(highlightClassName);
-    });
+  const highlightedElements = [...document.getElementsByClassName(highlightClassName)];
+
+  highlightedElements.forEach((element) => {
+    element.classList.remove(highlightClassName);
+  });
 }
 
 function disableClick(event) {
-  console.log("disable click");
-    event.stopPropagation();
-    event.preventDefault();
-    event.stopImmediatePropagation();
+  event.stopPropagation();
+  event.preventDefault();
+  event.stopImmediatePropagation();
 }
 
 function getChildIndex(element) {
-    return Array.from(element.parentNode.children).indexOf(element) + 1;
+  return Array.from(element.parentNode.children).indexOf(element) + 1;
 }
 
 function createTooltip() {
-    //const eleCoordinates = element.getBoundingClientRect();
-    const tooltip = document.createElement('span');
-    tooltip.id = 'nw-tooltip';
-    document.body.appendChild(tooltip);
-    return tooltip;
+  //const eleCoordinates = element.getBoundingClientRect();
+  const tooltip = document.createElement('span');
+  tooltip.id = 'nw-tooltip';
+  document.body.appendChild(tooltip);
+
+  return tooltip;
 }
 
 function updateTooltipPosition(element = null, selector = '') {
-    if (element === null) {
-        nwTooltip.style.top = '0px';
-        nwTooltip.style.left = '0px';
-        nwTooltip.textContent = '';
-        return;
-    }
+  if (element === null) {
+    nwTooltip.style.top = '0px';
+    nwTooltip.style.left = '0px';
+    nwTooltip.textContent = '';
 
-    // TODO: Should check if tootltip position is out of window (bottom of screen)
-    const rect = element.getBoundingClientRect();
-    nwTooltip.style.top = rect.bottom + window.pageYOffset + 10 + 'px';
-    nwTooltip.style.left = rect.left + 'px';
-    nwTooltip.textContent = selector;
-    if ( window.innerWidth - nwTooltip.getBoundingClientRect().right < 0) {
-      nwTooltip.style.left = rect.left + window.innerWidth - nwTooltip.getBoundingClientRect().right + 'px';
-    }
+    return;
+  }
+
+  // TODO: Should check if tootltip position is out of window (bottom of screen)
+  const rect = element.getBoundingClientRect();
+  nwTooltip.style.top = rect.bottom + window.pageYOffset + 10 + 'px';
+  nwTooltip.style.left = rect.left + 'px';
+  nwTooltip.textContent = selector;
+  if (window.innerWidth - nwTooltip.getBoundingClientRect().right < 0) {
+    nwTooltip.style.left = rect.left + window.innerWidth - nwTooltip.getBoundingClientRect().right + 'px';
+  }
 }
 
 
 function getAttributeSelectors(element) {
   const attributes = [...element.attributes];
-  const attributesToConsider = ['placeholder', 'name', 'type', 'alt', 'value', 'for', 'title', 'lang', 'href']
+  const attributesToConsider = ['placeholder', 'name', 'type', 'alt', 'value', 'for', 'title', 'lang', 'href'];
 
   return attributes.reduce((prev, next) => {
-      const attributesName = next.nodeName.toLowerCase();
-      const attributesValue = next.value;
-      if (attributesName.startsWith('data-') || attributesName.startsWith('aria-') || attributesToConsider.indexOf(attributesName) > -1) {
-          if (attributesValue) {
-              prev.push(`[${attributesName}="${attributesValue}"]`);
-          }
+    const attributesName = next.nodeName.toLowerCase();
+    const attributesValue = next.value;
+    if (attributesName.startsWith('data-') || attributesName.startsWith('aria-') || attributesToConsider.indexOf(attributesName) > -1) {
+      if (attributesValue) {
+        prev.push(`[${attributesName}="${attributesValue}"]`);
       }
+    }
 
-      return prev;
+    return prev;
   }, []);
 
 }
 
 function getClassSelectors(element) {
   const classList = [...element.classList].filter((Class) => Class !== highlightClassName);
+
   return classList.map(Class => `.${Class}`);
 }
 
 function getIdSelectors(element) {
   const id = element.getAttribute('id');
-  if(id && id !== '') {
-      return `#${id}`;
+  if (id && id !== '') {
+    return `#${id}`;
   }
 
   return null;
@@ -180,11 +181,10 @@ function getUniqueCombination(element, selectors, tagName) {
   let combinations = getCombinations(selectors);
 
   combinations = combinations.map(combination => tagName + combination);
-  uniqueFirstSelector = chooseFirstUniqueSelector(element, combinations);
+  const uniqueFirstSelector = chooseFirstUniqueSelector(element, combinations);
 
-  if(uniqueFirstSelector)
-  {
-      return uniqueFirstSelector;
+  if (uniqueFirstSelector) {
+    return uniqueFirstSelector;
   }
 
   return null;
@@ -194,26 +194,27 @@ function getCombinations(selectors) {
   const combinations = [...selectors];
   for (let i=0; i < selectors.length-1; i++) {
 
-      for (let j=i+1; j < selectors.length; j++) {
-          combinations.push(selectors[i] + selectors[j]);
-      }
+    for (let j=i+1; j < selectors.length; j++) {
+      combinations.push(selectors[i] + selectors[j]);
+    }
 
   }
+
   return combinations;
 } 
 
 function chooseFirstUniqueSelector(element, selectors) {
-  for(let selector of selectors) {
-      if (isUnique(selector)) {
-          return selector;
-      }
+  for (const selector of selectors) {
+    if (isUnique(selector)) {
+      return selector;
+    }
       
   }
   // select unique selector in its parent children
-  for(let selector of selectors) {
-      if (isUniqueInParent(element, selector)) {
-          return selector;
-      }
+  for (const selector of selectors) {
+    if (isUniqueInParent(element, selector)) {
+      return selector;
+    }
       
   }
 
@@ -231,21 +232,21 @@ function generateSelectorFromParent(element) {
   selector = getUniqueCombination(element, attributesSelectors, tagName);
 
   if (selector) {
-      return selector;
+    return selector;
   }
 
   if (idSelectors && isUnique(element, idSelectors)) {
-      return idSelectors;
+    return idSelectors;
   }
 
   selector = getUniqueCombination(element, classSelectors, tagName);
 
-  if(selector) {
-      return selector;
+  if (selector) {
+    return selector;
   }
 
   if (cssPath) {
-      return cssPath;
+    return cssPath;
   }
 
   return '*';
@@ -254,7 +255,7 @@ function generateSelectorFromParent(element) {
 
 function getParentElement(element) {
   if (element.parentNode) {
-      return element.parentNode;
+    return element.parentNode;
   }
 
   return null;
@@ -288,9 +289,9 @@ function generateSelector(element) {
   selectors.unshift(uniqueSelector);
 
   while (!isUnique(uniqueSelector)) {
-      targetElement = getParentElement(targetElement);
-      selectors.unshift(generateSelectorFromParent(targetElement));
-      uniqueSelector = selectors.join(' > ');
+    targetElement = getParentElement(targetElement);
+    selectors.unshift(generateSelectorFromParent(targetElement));
+    uniqueSelector = selectors.join(' > ');
   }
   
   return uniqueSelector;

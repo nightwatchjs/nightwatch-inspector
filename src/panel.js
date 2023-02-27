@@ -2,17 +2,17 @@ const tabID = chrome.devtools.inspectedWindow.tabId;
 const exploreModeId = 'exploreMode';
 const tryNightwatchCommandId = 'tryNightwatchCommand';
 const nightwatchCommandId = 'nightwatchCommand';
-const input = document.getElementById("nightwatchCommand");
-const suggestion = document.getElementById("suggestion");
+const input = document.getElementById('nightwatchCommand');
+const suggestion = document.getElementById('suggestion');
 const commandHistory = new Set();
-let EXPLORE_MODE = false;
 const portNumber = 8080;
 let webSocket;
-let words = []
+let words = [];
 
 
 connectWebSocket(portNumber)
   .then((socket) => {
+    // eslint-disable-next-line no-console
     console.log(`WebSocket connected on port ${socket.url}`);
   })
   .catch((error) => {
@@ -20,7 +20,7 @@ connectWebSocket(portNumber)
   });
 
 const backgroundPageConnection = chrome.runtime.connect({
-  name: "Selector Playground"
+  name: 'Selector Playground'
 });
 
 //Establishing connention with background.js
@@ -49,12 +49,15 @@ function connectWebSocket(port) {
     const socket = new WebSocket(`ws://localhost:${port}`);
     socket.onopen = () => {
       resolve(socket);
+      
+      // eslint-disable-next-line no-console
       console.log(`Hurray, Connected to Nightwatch Server localhost:${port}`);
       socket.send('commandlist');
       webSocket = socket;
     };
   
     socket.onclose = () => {
+      // eslint-disable-next-line no-console
       console.log(`Disconnected from Nightwatch Server localhost:${port}`);
     };
 
@@ -66,7 +69,7 @@ function connectWebSocket(port) {
         
         return;
       }
-      console.log(result);
+
       commandResultElement.textContent = result;
       if (!error && !commandHistory.has(executedCommand)) {
         addRowInCommand(executedCommand);
@@ -152,7 +155,7 @@ function clickOnHighlight(event) {
 function clickOnCopy(event) {
   // Info: clipboard API not working. Using deprecated execCommand function
   const selectorValue = getSelectorFromFirstCell(event);
-  const textarea = document.createElement("textarea");
+  const textarea = document.createElement('textarea');
 
   textarea.textContent = selectorValue;
   document.body.appendChild(textarea);
@@ -202,7 +205,7 @@ window.onload = () => {
 };
 
 const clearSuggestion = () => {
-  suggestion.innerHTML = "";
+  suggestion.innerHTML = '';
 };
 
 //Execute function on input
@@ -212,7 +215,7 @@ input.addEventListener('input', (e) => {
   
   for (let i in words) {
     //check if input matches with any word in words array
-    if (words[i].startsWith(inputValue) && input.value != '' && inputValue != '') {
+    if (words[i].startsWith(inputValue) && input.value !== '' && inputValue !== '') {
       //display suggestion
       const suggestionValue = words[i].replace(inputValue, '');
       suggestion.innerHTML = input.value + suggestionValue;
@@ -224,7 +227,7 @@ input.addEventListener('input', (e) => {
 //Complete predictive text on enter key
 input.addEventListener('keydown', (e) => {
   //When user presses enter and suggestion exists
-  if (e.keyCode == 39 && suggestion.innerText != '') {
+  if (e.keyCode === 39 && suggestion.innerText !== '') {
     e.preventDefault();
     input.value = suggestion.innerText;
     //clear the suggestion
