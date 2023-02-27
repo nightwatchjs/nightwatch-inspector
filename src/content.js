@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener(handleMessages);
 
 document.addEventListener('mouseover', mouseOver);
 document.addEventListener('mouseout', mouseOut);
-document.addEventListener('click', clickEvent);
+document.addEventListener('click', clickEvent, {capture: true});
 
 function handleMessages(message) {
   const {action, content} = message;
