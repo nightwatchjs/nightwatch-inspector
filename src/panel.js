@@ -183,9 +183,6 @@ function addRow(selector) {
   newCell.style.width = '65%';
   newCell.appendChild(document.createTextNode(selector));
   
-  // newCell = newRow.insertCell();
-  // newCell.style.width = '25%';
-  // newCell.appendChild(document.createTextNode(timestamp));
   
   newCell = newRow.insertCell();
   newCell.style.width = '35%';
