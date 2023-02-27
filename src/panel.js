@@ -180,7 +180,7 @@ function addRow(selector) {
   copyButton.addEventListener('click', clickOnCopy);
   
   var newCell = newRow.insertCell();
-  newCell.style.width = '70%';
+  newCell.style.width = '65%';
   newCell.appendChild(document.createTextNode(selector));
   
   // newCell = newRow.insertCell();
@@ -188,7 +188,7 @@ function addRow(selector) {
   // newCell.appendChild(document.createTextNode(timestamp));
   
   newCell = newRow.insertCell();
-  newCell.style.width = '30%';
+  newCell.style.width = '35%';
   newCell.appendChild(highlightButton);
   newCell.appendChild(copyButton);
 }
