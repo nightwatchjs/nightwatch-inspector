@@ -21,7 +21,8 @@
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"],
-      "css": ["style.css"]
+      "css": ["style.css"],
+      "all_frames": true
     }
   ]
 }
