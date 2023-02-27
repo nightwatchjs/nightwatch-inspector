@@ -11,7 +11,6 @@ chrome.runtime.onConnect.addListener(function (port) {
     } 
     // Send all messages recieved from devtools to content js
     chrome.tabs.sendMessage(message.tabId, message, sendResponse);
-    
   };
   
   // Listen to messages sent from the DevTools page
@@ -32,6 +31,5 @@ chrome.runtime.onConnect.addListener(function (port) {
         break;
       }
     }
-    
   });
 });
