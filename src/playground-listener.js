@@ -9,6 +9,15 @@ module.exports = class SelectorPlaygroundServer {
     this.portNumber = 8080;
   }
 
+  getNightwatchCommands(api, commandList) {
+    commandList.push('browser');
+    commandList.push(...Object.keys(api));
+    commandList.push(...Object.keys(api.assert));
+    commandList.push(...Object.keys(api.expect));
+    commandList.push(...Object.keys(api.verify));
+    commandList.push(...Object.keys(api.ensure));
+  }
+
   setClient(client) {
     this.client = client;
   }
@@ -43,11 +52,23 @@ module.exports = class SelectorPlaygroundServer {
 
     this._wss.on('connection', (ws) => {
       ws.on('message', async (data) => {
+        if (data.toString() === 'commandlist') {
+          const commandList = [];
+          this.getNightwatchCommands(this.client.api, commandList);
+          ws.send(JSON.stringify({
+            commandList: commandList
+          }));
+
+          return;
+        }
+
+        
         this.Debuggability.debugMode = true;
         const isES6AsyncTestcase = this.client.isES6AsyncTestcase;
         this.client.isES6AsyncTestcase = true;
   
         const context = {browser: this.client.api};
+        const assert = context.browser.assert;
         vm.createContext(context);
         
         let result;
