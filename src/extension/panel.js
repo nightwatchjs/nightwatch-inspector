@@ -180,15 +180,15 @@ function addRow(selector) {
   copyButton.addEventListener('click', clickOnCopy);
   
   var newCell = newRow.insertCell();
-  newCell.style.width = '50%';
+  newCell.style.width = '70%';
   newCell.appendChild(document.createTextNode(selector));
   
-  newCell = newRow.insertCell();
-  newCell.style.width = '25%';
-  newCell.appendChild(document.createTextNode(timestamp));
+  // newCell = newRow.insertCell();
+  // newCell.style.width = '25%';
+  // newCell.appendChild(document.createTextNode(timestamp));
   
   newCell = newRow.insertCell();
-  newCell.style.width = '25%';
+  newCell.style.width = '30%';
   newCell.appendChild(highlightButton);
   newCell.appendChild(copyButton);
 }
