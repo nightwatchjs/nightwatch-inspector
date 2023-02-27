@@ -24,9 +24,9 @@
             <table id="selectorTable">
                 <thead>
                   <tr>
-                    <th style="width: 50%;">Selector</th>
-                    <th style="width: 25%;">Timestamp</th>
-                    <th style="width: 25%;" class="table-row">Actions</th>
+                    <th style="width: 70%;">Selector</th>
+                    <!-- <th style="width: 25%;">Timestamp</th> -->
+                    <th style="width: 30%;" class="table-row">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -37,7 +37,8 @@
         <div class="container">
             <div class="heading1">Try nightwatch Commands</div>
             <div class="container1">
-                <input type="text" id="nightwatchCommand" value="browser.title()"></input>
+                <input type="text" id="nightwatchCommand" value="browser.title()" autocomplete="off"></input>
+                <span id="suggestion"></span>
                 <button class="button-default" id="tryNightwatchCommand">Try</button>
             </div>
             <div class="heading1">Result</div>
