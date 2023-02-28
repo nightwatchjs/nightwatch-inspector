@@ -111,8 +111,7 @@ function clickOnExploreMode(event) {
 document.querySelector('#nightwatchCommand').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') {
     e.preventDefault();
-    const nightwatchCommandElement = document.getElementById('nightwatchCommand');
-    webSocket.send(JSON.stringify(nightwatchCommandElement.value));
+    tryNightwatchCommand();
   }
 });
 

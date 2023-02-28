@@ -10,6 +10,10 @@ body {
     margin: 0px;
 }
 
+.explore-container {
+    align-items: center;
+}
+
 header {
     display: flex;
     flex-direction: row;
