@@ -8,7 +8,8 @@
     "prepublishOnly": "npm run build",
     "prepack": "npm run build",
     "postinstall": "npm run build",
-    "eslint": "eslint index.js src --quiet"
+    "eslint": "eslint index.js src --quiet",
+    "test": "npx nightwatch ./tests --headless"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -48,6 +49,9 @@
     "archiver": "^5.3.1"
   },
   "devDependencies": {
-    "eslint": "^8.9.0"
+    "chromedriver": "^110.0.0",
+    "eslint": "^8.9.0",
+    "http-server": "^14.1.1",
+    "nightwatch": "^2.6.16"
   }
 }
