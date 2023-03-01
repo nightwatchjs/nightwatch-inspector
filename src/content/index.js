@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 const highlightClassName = 'nw-highlight';
 
 //Explore mode is not the default mode

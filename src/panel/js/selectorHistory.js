@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 
 /**
  * ADD ROW TO SELECTOR HISTORY IN EXPLORE MODE

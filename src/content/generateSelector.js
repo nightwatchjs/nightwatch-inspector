@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 /**
  * Click Selector Priority
  * 

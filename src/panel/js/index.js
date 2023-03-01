@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 const tabID = chrome.devtools.inspectedWindow.tabId;
 
 const backgroundPageConnection = chrome.runtime.connect({

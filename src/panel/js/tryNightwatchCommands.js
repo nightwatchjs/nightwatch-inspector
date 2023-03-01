@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 /**
  * TRY NIGHTWATCH COMMANDS
  */

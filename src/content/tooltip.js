@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 const nwTooltip = createTooltip();
 
 function createTooltip() {
