@@ -20,7 +20,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"],
+      "js": ["content/index.js", "content/generateSelector.js", "content/tooltip.js"],
       "css": ["style.css"],
       "all_frames": true
     }
