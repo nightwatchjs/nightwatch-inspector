@@ -60,6 +60,3 @@ This code snippet shows how to import the Nightwatch Inspector in other projects
 ## 🤝 Contributing
 Contributions are always welcome! If you have any suggestions, bug reports, or pull requests, please feel free to open an issue or pull request.
 
-## 📄 License
-
-[MIT](https://github.com/harshit-bs/nightwatch-selector-playground/blob/main/LICENSE)
