@@ -1,6 +1,6 @@
 {
-  "name": "nightwatch-selector-playground",
-  "version": "1.0.8",
+  "name": "@nightwatch/nightwatch-inspector",
+  "version": "1.0.0",
   "description": "Nightwatch Selector Playground that allows you to tests command directly from the browser",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,9 @@
     "postinstall": "npm run build",
     "eslint": "eslint index.js src --quiet",
     "test": "npx nightwatch ./tests --headless"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -31,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harshit-bs/nightwatch-selector-playground.git"
+    "url": "git+https://github.com/nightwatchjs/nightwatch-selector-playground.git"
   },
   "keywords": [
     "nightwatch",
@@ -42,9 +45,9 @@
   "author": "Harshit Agrawal",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/harshit-bs/nightwatch-selector-playground/issues"
+    "url": "https://github.com/nightwatchjs/nightwatch-selector-playground/issues"
   },
-  "homepage": "https://github.com/harshit-bs/nightwatch-selector-playground#readme",
+  "homepage": "https://github.com/nightwatchjs/nightwatch-selector-playground#readme",
   "dependencies": {
     "archiver": "^5.3.1"
   },
