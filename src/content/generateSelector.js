@@ -23,7 +23,13 @@ function getAttributeSelectors(element) {
   return attributes.reduce((prev, next) => {
     const attributesName = next.nodeName.toLowerCase();
     const attributesValue = next.value;
-    if (attributesName.startsWith('data-') || attributesName.startsWith('aria-') || attributesToConsider.indexOf(attributesName) > -1) {
+    if (attributesName.startsWith('data-') || attributesName.startsWith('aria-')) {
+      if (attributesValue) {
+        prev.unshift(`[${attributesName}="${attributesValue}"]`);
+      }
+    }
+
+    if (attributesToConsider.indexOf(attributesName) > -1) {
       if (attributesValue) {
         prev.push(`[${attributesName}="${attributesValue}"]`);
       }
