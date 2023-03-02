@@ -1,6 +1,6 @@
 const httpServer = require('http-server');
 
-describe('Selector Playground Tests', function() {
+describe('Nightwatch Inspector Tests', function() {
   let server;
 
   before(browser => {

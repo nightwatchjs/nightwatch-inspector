@@ -1,7 +1,7 @@
 {
   "name": "@nightwatch/nightwatch-inspector",
   "version": "1.0.0",
-  "description": "Nightwatch Selector Playground that allows you to tests command directly from the browser",
+  "description": "Nightwatch Inspector that allows you to tests command directly from the browser",
   "main": "index.js",
   "scripts": {
     "build": "./preprocessExtension.sh",
@@ -40,7 +40,8 @@
     "nightwatch",
     "chrome",
     "selector-playground",
-    "automation"
+    "automation",
+    "nightwatchInspector"
   ],
   "author": "Harshit Agrawal",
   "license": "MIT",
