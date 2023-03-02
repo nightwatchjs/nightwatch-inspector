@@ -18,12 +18,18 @@
 
 function getAttributeSelectors(element) {
   const attributes = [...element.attributes];
-  const attributesToConsider = ['placeholder', 'name', 'type', 'alt', 'value', 'for', 'title', 'lang', 'href'];
+  const attributesToConsider = ['placeholder', 'name', 'type', 'alt', 'value', 'for', 'title', 'id', 'lang', 'href'];
 
   return attributes.reduce((prev, next) => {
     const attributesName = next.nodeName.toLowerCase();
     const attributesValue = next.value;
-    if (attributesName.startsWith('data-') || attributesName.startsWith('aria-') || attributesToConsider.indexOf(attributesName) > -1) {
+    if (attributesName.startsWith('data-') || attributesName.startsWith('aria-')) {
+      if (attributesValue) {
+        prev.unshift(`[${attributesName}="${attributesValue}"]`);
+      }
+    }
+
+    if (attributesToConsider.indexOf(attributesName) > -1) {
       if (attributesValue) {
         prev.push(`[${attributesName}="${attributesValue}"]`);
       }
@@ -128,7 +134,6 @@ function isUnique(selector) {
 function generateSelectorFromParent(element) {
   const attributesSelectors = getAttributeSelectors(element);
   const classSelectors = getClassSelectors(element);
-  const idSelectors = getIdSelectors(element);
   const cssPath = getCssPath(element);
   const tagName = getTag(element);
 
@@ -136,10 +141,6 @@ function generateSelectorFromParent(element) {
 
   if (selector) {
     return selector;
-  }
-
-  if (idSelectors && isUnique(element, idSelectors)) {
-    return idSelectors;
   }
 
   selector = getUniqueCombination(element, classSelectors, tagName);
