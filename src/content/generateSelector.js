@@ -18,7 +18,7 @@
 
 function getAttributeSelectors(element) {
   const attributes = [...element.attributes];
-  const attributesToConsider = ['placeholder', 'name', 'type', 'alt', 'value', 'for', 'title', 'lang', 'href'];
+  const attributesToConsider = ['placeholder', 'name', 'type', 'alt', 'value', 'for', 'title', 'id', 'lang', 'href'];
 
   return attributes.reduce((prev, next) => {
     const attributesName = next.nodeName.toLowerCase();
@@ -128,7 +128,7 @@ function isUnique(selector) {
 function generateSelectorFromParent(element) {
   const attributesSelectors = getAttributeSelectors(element);
   const classSelectors = getClassSelectors(element);
-  const idSelectors = getIdSelectors(element);
+  //const idSelectors = getIdSelectors(element);
   const cssPath = getCssPath(element);
   const tagName = getTag(element);
 
@@ -136,10 +136,6 @@ function generateSelectorFromParent(element) {
 
   if (selector) {
     return selector;
-  }
-
-  if (idSelectors && isUnique(element, idSelectors)) {
-    return idSelectors;
   }
 
   selector = getUniqueCombination(element, classSelectors, tagName);
