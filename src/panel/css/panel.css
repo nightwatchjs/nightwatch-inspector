@@ -7,6 +7,7 @@
 }
 
 body {
+    font-family: 'Source Sans Pro', -apple-system, sans-serif;
     margin: 0px;
 }
 
@@ -40,7 +41,6 @@ header {
 }
 
 .heading {
-    font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -49,10 +49,9 @@ header {
 }
 
 .heading1 {
-    font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 32px;
     color: #1B1B1B;
 }
@@ -75,8 +74,6 @@ th {
 #selectorTable td, #selectorTable th{
     border: 1px solid hsl(0,0%,87%);
     padding: 8px;
-
-    font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -95,8 +92,6 @@ input[type="text"], textarea {
     border-radius: 4px;
     z-index: 3;
     background: #FFFFFF;
-
-    font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -109,8 +104,6 @@ input[type="text"], textarea {
     height: 36px;
     overflow: auto;
     width: 100%;
-
-    font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -126,8 +119,6 @@ input[type="text"], textarea {
     height: 100px;
     overflow: auto;
     background: #FFFFFF;
-
-    font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -160,7 +151,6 @@ footer {
 }
 
 .heading2 {
-    font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -220,8 +210,6 @@ footer .heading2 {
     align-items: center;
     padding: 9px;
     color: #868686;
-
-    font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
