@@ -134,7 +134,6 @@ function isUnique(selector) {
 function generateSelectorFromParent(element) {
   const attributesSelectors = getAttributeSelectors(element);
   const classSelectors = getClassSelectors(element);
-  //const idSelectors = getIdSelectors(element);
   const cssPath = getCssPath(element);
   const tagName = getTag(element);
 
