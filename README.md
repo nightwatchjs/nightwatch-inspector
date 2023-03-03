@@ -1,15 +1,15 @@
 
-# Nightwatch Selector Playground 🎮
+# Nightwatch Inspector 🕵️
 <p align="center">
   <img alt="Nightwatch.js Logo" src="https://raw.githubusercontent.com/nightwatchjs/nightwatch/main/.github/assets/nightwatch-logo.png" width=200 />
 </p>
 
-Nightwatch Selector Playground is a developer tool 🛠️ which currently supports Google Chrome. It is designed to help you CSS selectors for elements on a webpage. It also allows you to tests nightwatch commands directly from the browser in Nightwatch debug mode. 
+Nightwatch Inspector is a developer tool 🛠️ which currently supports Google Chrome. It is designed to help you CSS selectors for elements on a webpage. It also allows you to tests nightwatch commands directly from the browser in Nightwatch debug mode. 
 
-This developer tool doesn't require any setup or downloads. You can simply use the version of Nightwatch where the Nightwatch Selector Playground is supported. It is specifically designed to work with [Nightwatch.js](https://nightwatchjs.org/), a popular end-to-end testing framework.
+This developer tool doesn't require any setup or downloads. You can simply use the version of Nightwatch where the Nightwatch Inspector is supported. It is specifically designed to work with [Nightwatch.js](https://nightwatchjs.org/), a popular end-to-end testing framework.
 
 ## 🚀 Getting Started With Nightwatch 
-1. Make sure Nightwatch is already installed and it supports the Nightwatch Selector Playground. If it is not installed, you can refer to the [documentation](https://nightwatchjs.org/guide/quickstarts/create-and-run-a-nightwatch-test.html) 📖
+1. Make sure Nightwatch is already installed and it supports the Nightwatch Inspector. If it is not installed, you can refer to the [documentation](https://nightwatchjs.org/guide/quickstarts/create-and-run-a-nightwatch-test.html) 📖
 2. Add `pause` or `debug` command in your test to wait. For e.g.
    
    ```js
@@ -24,7 +24,7 @@ This developer tool doesn't require any setup or downloads. You can simply use t
    ```sh
     npx nightwatch ./nightwatch/examples/basic/ecosia.js -e chrome --debug
    ```
-4. In chrome browser, inspect the elements  of the webpage and go to `Selector Playground` tab
+4. In chrome browser, inspect the elements  of the webpage and go to `Nightwatch Inspector` tab
 5. Click the `Explore Mode` button to find CSS selectors for the elements on the webpage.
 6. Use these selectors in Nightwatch commands and click the Try button to see the results
 
@@ -47,10 +47,10 @@ Check out the demo of the playground in action 👀
 This tool is not limited to Nightwatch.js and can be used in any project that needs CSS selectors. However, it comes with a limitation; you cannot test Nightwatch commands directly from the browser because it doesn't connected to the Nightwatch Server.
 
 ```js
-import {crxfile} from 'nightwatch-selector-playground';
+import {crxfile} from '@nightwatch/nightwatch-inspector';
 ```
 
-This code snippet shows how to import the Nightwatch Selector Playground in other projects. 💻
+This code snippet shows how to import the Nightwatch Inspector in other projects. 💻
 
 ## 🚫 Limitations
 - Currently, the tool only supports serial mode and does not support parallelism.
@@ -60,6 +60,3 @@ This code snippet shows how to import the Nightwatch Selector Playground in othe
 ## 🤝 Contributing
 Contributions are always welcome! If you have any suggestions, bug reports, or pull requests, please feel free to open an issue or pull request.
 
-## 📄 License
-
-[MIT](https://github.com/harshit-bs/nightwatch-selector-playground/blob/main/LICENSE)
