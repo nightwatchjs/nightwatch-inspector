@@ -2,7 +2,7 @@
 
 let webSocket;
 let words = [];
-const portNumber = 8080;
+const portNumber = 10096;
 const commandHistory = new Set();
 
 function connectWebSocket(port) {
