@@ -41,7 +41,7 @@
     "chrome",
     "selector-playground",
     "automation",
-    "nightwatchInspector"
+    "nightwatch-inspector"
   ],
   "author": "Harshit Agrawal",
   "license": "MIT",
