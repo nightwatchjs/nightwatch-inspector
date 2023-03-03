@@ -3,7 +3,7 @@
 const tabID = chrome.devtools.inspectedWindow.tabId;
 
 const backgroundPageConnection = chrome.runtime.connect({
-  name: 'Selector Playground'
+  name: 'Nightwatch Inspector'
 });
 
 function sendMessageToBackground(action = null, content = null) {

@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Nightwatch Selector Playground",
-  "description": "Nightwatch Selector Playground that allows you to tests command directly from the browser",
+  "name": "Nightwatch Inspector",
+  "description": "Nightwatch Inspector that allows you to tests command directly from the browser",
   "permissions": ["tabs"],
   
   "version": "1.0",
-  "devtools_page": "playground.html",
+  "devtools_page": "nightwatchInspector.html",
   "icons": {
     "16": "assets/icon16.png",
     "48": "assets/icon48.png",
