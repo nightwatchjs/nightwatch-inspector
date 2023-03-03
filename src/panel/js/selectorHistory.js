@@ -10,17 +10,21 @@ function getSelectorFromFirstCell(event) {
   return targetElement.textContent;
 }
 
-function clickOnCopy(event) {
-  // Info: clipboard API not working. Using deprecated execCommand function
-  const selectorValue = getSelectorFromFirstCell(event);
+function copyToClipboard(value) {
   const textarea = document.createElement('textarea');
 
-  textarea.textContent = selectorValue;
+  textarea.textContent = value;
   document.body.appendChild(textarea);
   textarea.select();
 
   document.execCommand('copy');
   document.body.removeChild(textarea);
+}
+
+function clickOnCopy(event) {
+  // Info: clipboard API not working. Using deprecated execCommand function
+  const selectorValue = getSelectorFromFirstCell(event);
+  copyToClipboard(selectorValue);
 }
 
 function clickOnHighlight(event) {

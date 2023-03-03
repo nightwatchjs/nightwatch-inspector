@@ -123,6 +123,8 @@ input[type="text"], textarea {
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
+    cursor: pointer;
+    outline-color: #DDDDDD !important;
 }
 thead, tr, tbody {
     width: 100%;

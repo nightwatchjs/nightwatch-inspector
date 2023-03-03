@@ -18,7 +18,7 @@ function tryNightwatchCommand() {
 
 document.getElementById(tryNightwatchCommandId).addEventListener('click', tryNightwatchCommand);
 
-document.querySelector('#nightwatchCommand').addEventListener('keydown', function(e) {
+document.getElementById(nightwatchCommandId).addEventListener('keydown', function(e) {
   if (e.key === 'Enter') {
     e.preventDefault();
     tryNightwatchCommand();
