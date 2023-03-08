@@ -87,7 +87,7 @@ function isUniqueInParent(element, selector) {
     const elements = parentNode.querySelectorAll(selector);
 
     return elements.length === 1;
-  } catch {
+  } catch (e) {
     return false;
   }
 }
@@ -126,7 +126,7 @@ function isUnique(selector) {
     const elements = document.querySelectorAll(selector);
 
     return elements.length === 1;
-  } catch {
+  } catch (e) {
     return false;
   }
 }
