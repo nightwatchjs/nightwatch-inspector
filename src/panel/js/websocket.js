@@ -4,6 +4,7 @@ let webSocket;
 let words = [];
 const portNumber = 10096;
 const commandHistory = new Set();
+const commandTableId = 'commandTable';
 
 function connectWebSocket(port) {
   return new Promise((resolve, reject) => {
@@ -31,7 +32,7 @@ function connectWebSocket(port) {
         return;
       }
 
-      commandResultElement.textContent = result;
+      commandResultElement.textContent = typeof(result) === 'object' ? JSON.stringify(result) : result;
       if (!error && !commandHistory.has(executedCommand)) {
         addRowInCommand(executedCommand);
         commandHistory.add(executedCommand);
@@ -56,8 +57,8 @@ function connectWebSocket(port) {
 
 //Add row to commands history
 function addRowInCommand(command) {
-  const selectorTable = document.getElementById('commandTable');
-  selectorTable.value = command + '\r\n' + selectorTable.value;
+  const selectorTable = document.getElementById(commandTableId);
+  selectorTable.value += command + '\r\n';
 }
 
 connectWebSocket(portNumber)
@@ -68,3 +69,8 @@ connectWebSocket(portNumber)
   .catch((error) => {
     console.error(`WebSocket error: ${error}`);
   });
+
+document.getElementById(commandTableId).addEventListener('click', function(event) {
+  const commandHistory = event.target.value;
+  copyToClipboard(commandHistory);
+});
