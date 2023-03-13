@@ -28,4 +28,5 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: npm install
+    - run: npm run eslint
     - run: npm test
