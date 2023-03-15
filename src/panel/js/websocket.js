@@ -49,7 +49,13 @@ function connectWebSocket(port) {
 
     socket.onerror = (err) => {
       console.error(`WebSocket error: ${err}`);
+      document.getElementById('socket-connected').style.display = 'none';
+      document.getElementById('socket-disconnected').style.display = 'flex';
       socket.close();
+
+      if (port > portNumber + 15) {
+        return;
+      }
 
       connectWebSocket(port + 1)
         .then(resolve)
