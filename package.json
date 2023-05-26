@@ -1,6 +1,6 @@
 {
   "name": "@nightwatch/nightwatch-inspector",
-  "version": "1.0.1",
+  "version": "3.0.0",
   "description": "Nightwatch Inspector that allows you to tests command directly from the browser",
   "main": "index.js",
   "scripts": {
@@ -53,9 +53,8 @@
     "archiver": "^5.3.1"
   },
   "devDependencies": {
-    "chromedriver": "^110.0.0",
     "eslint": "^8.9.0",
     "http-server": "^14.1.1",
-    "nightwatch": "^2.6.16"
+    "nightwatch": "^3.0.0"
   }
 }
