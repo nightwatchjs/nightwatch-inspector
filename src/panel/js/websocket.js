@@ -11,7 +11,8 @@ function connectWebSocket(port) {
     const socket = new WebSocket(`ws://localhost:${port}`);
     socket.onopen = () => {
       resolve(socket);
-      
+      document.getElementById('socket-connected').style.display = 'flex';
+      document.getElementById('socket-disconnected').style.display = 'none';
       // eslint-disable-next-line no-console
       console.log(`Hurray, Connected to Nightwatch Server localhost:${port}`);
       socket.send('commandlist');
@@ -19,6 +20,8 @@ function connectWebSocket(port) {
     };
   
     socket.onclose = () => {
+      document.getElementById('socket-connected').style.display = 'none';
+      document.getElementById('socket-disconnected').style.display = 'flex';
       // eslint-disable-next-line no-console
       console.log(`Disconnected from Nightwatch Server localhost:${port}`);
     };
@@ -46,7 +49,13 @@ function connectWebSocket(port) {
 
     socket.onerror = (err) => {
       console.error(`WebSocket error: ${err}`);
+      document.getElementById('socket-connected').style.display = 'none';
+      document.getElementById('socket-disconnected').style.display = 'flex';
       socket.close();
+
+      if (port > portNumber + 15) {
+        return;
+      }
 
       connectWebSocket(port + 1)
         .then(resolve)

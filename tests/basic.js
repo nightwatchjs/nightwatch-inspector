@@ -46,6 +46,11 @@ describe('Nightwatch Inspector Tests', function() {
     browser.expect.element('#exploreMode').to.not.be.selected;
   });
 
+  it('should display socket connected', function(browser) {
+    browser.expect.element('#socket-disconnected').to.be.visible;
+    browser.expect.element('#socket-connected').to.not.be.visible;
+  });
+
   after(browser => {
     server.close();
     browser.end();
