@@ -1,6 +1,6 @@
 {
   "name": "@nightwatch/nightwatch-inspector",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Nightwatch Inspector that allows you to tests command directly from the browser",
   "main": "index.js",
   "scripts": {
