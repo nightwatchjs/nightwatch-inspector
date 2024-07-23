@@ -9,7 +9,7 @@
     "prepack": "npm run build",
     "postinstall": "npm run build",
     "eslint": "eslint index.js src --quiet",
-    "test": "npx nightwatch ./tests --headless"
+    "test": "npx nightwatch ./tests --env chrome --headless"
   },
   "publishConfig": {
     "access": "public"
