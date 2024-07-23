@@ -104,3 +104,7 @@ typings/
 
 # NightwatchJS tests output
 tests_output/
+
+# build output
+dist/
+.DS_Store
