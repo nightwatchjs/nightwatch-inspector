@@ -3,7 +3,8 @@ describe('test Nightwatch Inspector extension in DevTools', function() {
     browser.navigateTo('https://nightwatchjs.org');
   })
 
-  it('opens devtools, switches to extension tab and checks title', async function() {
+  it('switches to devtools window, opens extension tab and checks title', async function() {
+    // get all targets (contexts) we can possibly switch to
     const targets = await browser.driver.sendAndGetDevToolsCommand('Target.getTargets', {});
 
     const devToolsTarget = targets.targetInfos.find(target => {
