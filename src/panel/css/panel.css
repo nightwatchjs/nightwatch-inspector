@@ -11,8 +11,9 @@ body {
     margin: 0px;
 }
 
-.explore-container {
-    align-items: center;
+#socket-status {
+    display: flex;
+    flex-direction: row;
 }
 
 header {
@@ -31,6 +32,12 @@ header {
     gap: 4px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.explore-container {
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
 }
 
 .container1 {
@@ -215,4 +222,20 @@ footer .heading2 {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
+}
+
+#socket-status .socket {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    border-radius: 81px;
+    border: 1px solid hsl(23,35%,55%);
+    background: hsla(0,55%,94%,0.5);
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+#socket-disconnected {
+    display: none;
 }
